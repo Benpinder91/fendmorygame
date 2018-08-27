@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
- const cards = [diamond , paper-plane , anchor , bolt , cube , anchor , leaf , bicycle , diamond , bomb , leaf , bomb , bolt , bicycle , paper-plane , cube];
  */
+ const cards = [diamond , paper-plane , anchor , bolt , cube , anchor , leaf , bicycle , diamond , bomb , leaf , bomb , bolt , bicycle , paper-plane , cube];
+ 
 
 
 /*
@@ -10,6 +11,22 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+//call the function shuffle to shuffle list of cards
+ shuffle(cards);
+//create tempory div to hold all the cards in while they are created 
+ const cardTemp = document.createElement ('div');
+ //loop though each card in the cards array
+ for(const card of cards) {
+//creates a new list item for each card in cards array
+let newElement = document.createElement('li');
+//add the css associated to each list item created (font awesome)
+let cardContent =  document.innerHTML = '<i class="fa fa-[]"></i>';
+//add new element to card holding div
+cardTemp.appendChild(newElement);
+//attaches card holdind div to document body after cards shuffled and created to document
+document.body.appendChild(cardTemp);
+}
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
