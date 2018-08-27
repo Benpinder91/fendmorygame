@@ -1,5 +1,6 @@
 /*
  * Create a list that holds all of your cards
+ const cards = [diamond , paper-plane , anchor , bolt , cube , anchor , leaf , bicycle , diamond , bomb , leaf , bomb , bolt , bicycle , paper-plane , cube];
  */
 
 
