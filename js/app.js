@@ -13,22 +13,32 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+/*
 //call the function shuffle to shuffle list of cards
  shuffle(cards);
-//create tempory div to hold all the cards in while they are created 
- const cardTemp = document.createElement ('div');
- //loop though each card in the cards array
- for(const card of cards) {
-//creates a new list item for each card in cards array
-let newElement = document.createElement('li');
-//add the css associated to each list item created (font awesome)
-let cardContent =  document.innerHTML = '<i class="fa fa-[]"></i>';
-//add new element to card holding div
-cardTemp.appendChild(newElement);
+*/
+
+//create card continer to hold the cards
+ const cardContainer = document.querySelector(".deck");
+ 
+// create the cards
+ //loop though each card in the cards array untill reaching end of the array
+ for(let i = 0; i<cards.length; i++) {
+//creates the cards in the HTML
+const card = document.createElement("li");
+// creates the class in HTML to match that that exist in the CSS
+card.classList.add("card");
+// add the icons style to each card
+card.innerHTML = `<i class = "${cards[i]}"><i/>`;
+//add new element to card container
+cardContainer.appendChild(card);
+ }
+
+/*
 //attaches card holdind div to document body after cards shuffled and created to document
 document.body.appendChild(cardTemp);
 }
-
+*/
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
