@@ -20,19 +20,46 @@
 
 //create card continer to hold the cards
  const cardContainer = document.querySelector(".deck");
+
+ //open array to store clicked card
+ let openCard = [];
  
 // create the cards
  //loop though each card in the cards array untill reaching end of the array
  for(let i = 0; i<cards.length; i++) {
-//creates the cards in the HTML
-const card = document.createElement("li");
-// creates the class in HTML to match that that exist in the CSS
-card.classList.add("card");
-// add the icons style to each card
-card.innerHTML = `<i class = "${cards[i]}"><i/>`;
-//add new element to card container
-cardContainer.appendChild(card);
- }
+    //creates the cards in the HTML
+    const card = document.createElement("li");
+    // creates the class in HTML to match that that exist in the CSS
+    card.classList.add("card");
+    // add the icons style to each card
+    card.innerHTML = `<i class = "${cards[i]}"><i/>`;
+    //add new element to card container
+    cardContainer.appendChild(card);
+
+//add event listner to the card 
+card.addEventListener("click", function(){
+    //when card is clicked adds css for an open card
+        // a card is already open execute if
+        if(openCard.length === 1 ) {
+            //adds the css of an open card to card to show it as open
+            card.classList.add("open" , "show")
+            // pushes the open card to the empty array
+            openCard.push(this);
+            //comapare the opened cards
+            if(this.innerHTML === openCard[0].innerHTML){
+            console.log('matched')
+            }else{
+                console.log ("no match")
+            }
+
+        // if no card has been opened execute else
+        }else{
+            card.classList.add("open" , "show")
+            openCard.push(this);
+        }
+    });
+
+  }
 
 /*
 //attaches card holdind div to document body after cards shuffled and created to document
