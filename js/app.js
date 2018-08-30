@@ -23,6 +23,7 @@
 
  //open array to store clicked card
  let openCard = [];
+ let matchedCards =[];
  
 // create the cards
  //loop though each card in the cards array untill reaching end of the array
@@ -56,8 +57,12 @@ card.addEventListener("click", function(){
                 //uses css class match and adds it to 1st/2nd clicked card if they both match
                 currentCard.classList.add("match");
                 previousCard.classList.add("match");
+                //adds matched cards to matched cards array
+                matchedCards.push(currentCard, previousCard);
                 //reset openCard to empty
                 openCard =[];
+                //check if all cards are matched
+                isOver();
 
             
             }else{
@@ -75,6 +80,14 @@ card.addEventListener("click", function(){
     });
 
   }
+
+//function that is called when the game is over
+function isOver (){
+    if(matchedCards.length === cards.length) {
+        alert("you win");
+    }
+
+}
 
 /*
 //attaches card holdind div to document body after cards shuffled and created to document
