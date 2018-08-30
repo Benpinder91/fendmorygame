@@ -38,23 +38,38 @@
 
 //add event listner to the card 
 card.addEventListener("click", function(){
+
+    const currentCard = this;
+    const previousCard = openCard[0];
     //when card is clicked adds css for an open card
         // a card is already open execute if
         if(openCard.length === 1 ) {
+            //create variables to be used in if/else
+            
+
             //adds the css of an open card to card to show it as open
-            card.classList.add("open" , "show")
+            card.classList.add("open" , "show");
             // pushes the open card to the empty array
             openCard.push(this);
             //comapare the opened cards
-            if(this.innerHTML === openCard[0].innerHTML){
-            console.log('matched')
+            if(currentCard.innerHTML === previousCard.innerHTML) {
+                //uses css class match and adds it to 1st/2nd clicked card if they both match
+                currentCard.classList.add("match");
+                previousCard.classList.add("match");
+                //reset openCard to empty
+                openCard =[];
+
+            
             }else{
-                console.log ("no match")
+                //reomve css style if card does not match
+                currentCard.classList.remove("open" , "show");
+                previousCard.classList.remove("open" , "show");
+                openCard =[];
             }
 
         // if no card has been opened execute else
         }else{
-            card.classList.add("open" , "show")
+            currentCard.classList.add("open" , "show");
             openCard.push(this);
         }
     });
