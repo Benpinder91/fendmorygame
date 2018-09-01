@@ -63,7 +63,7 @@ card.addEventListener("click", function(){
             
 
             //adds the css of an open card to card to show it as open
-            card.classList.add("open" , "show");
+            card.classList.add("open" , "show" , "disable");
             // pushes the open card to the empty array
             openCard.push(this);
             
@@ -72,7 +72,7 @@ card.addEventListener("click", function(){
 
         // if no card has been opened execute else
         }else{
-            currentCard.classList.add("open" , "show");
+            currentCard.classList.add("open" , "show", "disable");
             openCard.push(this);
         }
     });
