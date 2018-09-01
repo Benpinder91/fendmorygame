@@ -25,6 +25,10 @@
  let openCard = [];
  let matchedCards =[];
  
+ /*
+ * Start the game
+ * */
+function start(){
 // create the cards
  //loop though each card in the cards array untill reaching end of the array
  for(let i = 0; i<cards.length; i++) {
@@ -36,8 +40,18 @@
     card.innerHTML = `<i class = "${cards[i]}"><i/>`;
     //add new element to card container
     cardContainer.appendChild(card);
+ 
+    //add click event to each card in loop
+    click(card);
+    }
+}
 
-//add event listner to the card 
+
+/*
+*Click Event
+*/
+function click(card){
+    //add event listner to the card 
 card.addEventListener("click", function(){
 
     const currentCard = this;
@@ -52,25 +66,9 @@ card.addEventListener("click", function(){
             card.classList.add("open" , "show");
             // pushes the open card to the empty array
             openCard.push(this);
-            //comapare the opened cards
-            if(currentCard.innerHTML === previousCard.innerHTML) {
-                //uses css class match and adds it to 1st/2nd clicked card if they both match
-                currentCard.classList.add("match");
-                previousCard.classList.add("match");
-                //adds matched cards to matched cards array
-                matchedCards.push(currentCard, previousCard);
-                //reset openCard to empty
-                openCard =[];
-                //check if all cards are matched
-                isOver();
-
             
-            }else{
-                //reomve css style if card does not match
-                currentCard.classList.remove("open" , "show");
-                previousCard.classList.remove("open" , "show");
-                openCard =[];
-            }
+            //comapare the opened cards
+            compare(currentCard , previousCard);
 
         // if no card has been opened execute else
         }else{
@@ -78,8 +76,8 @@ card.addEventListener("click", function(){
             openCard.push(this);
         }
     });
-
-  }
+}
+  
 
 //function that is called when the game is over
 function isOver (){
@@ -88,6 +86,8 @@ function isOver (){
     }
 
 }
+//Start game for first time
+start();
 
 /*
 //attaches card holdind div to document body after cards shuffled and created to document
@@ -110,7 +110,32 @@ function shuffle(array) {
     return array;
 }
 
+/*
+*compare function
+*/ 
+function compare(currentCard , previousCard){
+if(currentCard.innerHTML === previousCard.innerHTML) {
+    //uses css class match and adds it to 1st/2nd clicked card if they both match
+    currentCard.classList.add("match");
+    previousCard.classList.add("match");
+    //adds matched cards to matched cards array
+    matchedCards.push(currentCard, previousCard);
+    //reset openCard to empty
+    openCard =[];
+    //check if all cards are matched
+    isOver();
 
+
+}else{
+    //add delay to action so to reveal 2nd card that does not match
+    setTimeout(function(){
+        currentCard.classList.remove("open" , "show");
+        previousCard.classList.remove("open" , "show");
+        openCard =[];
+    },1000);
+    //reomve css style if card does not match 
+}
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
