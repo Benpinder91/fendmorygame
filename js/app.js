@@ -87,6 +87,7 @@ function isOver (){
 
 }
 
+//function called when referesh button is clicked
 function refresh(){
 //refresh gamne
 const refreshBtn = document.querySelector (".restart");
@@ -97,15 +98,25 @@ cardContainer.innerHTML = "";
 start();
 //reset any related variables
 matchedCards =[];
+moves = 0;
+movesContainer.innerHTML = moves;
 });
 }
 
 
-
+// move counter
+const movesContainer = document.querySelector(".moves");
+let moves = 0;
+movesContainer.innerHTML = 0;
+function addMove(){
+    moves++;
+    movesContainer.innerHTML = moves;
+}
 
 //Start game for first time
 start();
-
+//
+refresh();
 /*
 //attaches card holdind div to document body after cards shuffled and created to document
 document.body.appendChild(cardTemp);
@@ -152,6 +163,10 @@ if(currentCard.innerHTML === previousCard.innerHTML) {
     },1000);
     //reomve css style if card does not match 
 }
+//add move
+addMove();
+
+
 }
 /*
  * set up the event listener for a card. If a card is clicked:
