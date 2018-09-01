@@ -100,16 +100,22 @@ start();
 matchedCards =[];
 moves = 0;
 movesContainer.innerHTML = moves;
+starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>`;
 });
 }
 
 //star rating
 const starsContainer =document.querySelector (".stars");
+starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>
+<li><i class="fa fa-star"></i></li>`;
 function rating(){
     switch (moves){
          case 12:  starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>`;
          break;
-         
+
          case 9: starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
          <li><i class="fa fa-star"></i></li>`;
          break;
@@ -129,7 +135,9 @@ function addMove(){
 }
 
 //Start game for first time
+shuffle(cards);
 start();
+
 //
 refresh();
 /*
@@ -174,8 +182,9 @@ if(currentCard.innerHTML === previousCard.innerHTML) {
     setTimeout(function(){
         currentCard.classList.remove("open" , "show" , "disable");
         previousCard.classList.remove("open" , "show" , "disable");
-        openCard =[];
+        
     },1000);
+    openCard =[];
     //reomve css style if card does not match 
 }
 //add move
