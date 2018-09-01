@@ -86,6 +86,23 @@ function isOver (){
     }
 
 }
+
+function refresh(){
+//refresh gamne
+const refreshBtn = document.querySelector (".restart");
+refreshBtn.addEventListener("click" , function(){
+//delete all cards
+cardContainer.innerHTML = "";
+//call start()
+start();
+//reset any related variables
+matchedCards =[];
+});
+}
+
+
+
+
 //Start game for first time
 start();
 
@@ -129,8 +146,8 @@ if(currentCard.innerHTML === previousCard.innerHTML) {
 }else{
     //add delay to action so to reveal 2nd card that does not match
     setTimeout(function(){
-        currentCard.classList.remove("open" , "show");
-        previousCard.classList.remove("open" , "show");
+        currentCard.classList.remove("open" , "show" , "disable");
+        previousCard.classList.remove("open" , "show" , "disable");
         openCard =[];
     },1000);
     //reomve css style if card does not match 

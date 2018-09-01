@@ -108,6 +108,9 @@ h1 {
     cursor: pointer;
 }
 
+/*
+*use to disable click events on open cards
+*/
 .deck .card.disable{
     pointer-events: none;
 }
