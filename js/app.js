@@ -103,6 +103,20 @@ movesContainer.innerHTML = moves;
 });
 }
 
+//star rating
+const starsContainer =document.querySelector (".stars");
+function rating(){
+    switch (moves){
+         case 12:  starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>`;
+         break;
+         
+         case 9: starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
+         <li><i class="fa fa-star"></i></li>`;
+         break;
+    }
+}
+
+
 
 // move counter
 const movesContainer = document.querySelector(".moves");
@@ -111,6 +125,7 @@ movesContainer.innerHTML = 0;
 function addMove(){
     moves++;
     movesContainer.innerHTML = moves;
+    rating();
 }
 
 //Start game for first time
